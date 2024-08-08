@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { NameValidator } from "../utils/NameValidator.js";
 
 const Register = () => {
     const [name, setName] = useState('');
@@ -10,15 +11,9 @@ const Register = () => {
     const [msg, setMsg] = useState('');
     const navigate = useNavigate();
 
-    const NameValidator = (e) => {
-        const inputValue = e.target.value;
-        const allowLetters = /^[a-zA-Z\s]*$/;
-
-        if (!allowLetters.test(inputValue)) {
-            e.target.value = inputValue.replace(/[^a-zA-Z\s]/g, '');
-        }
-
-        setName(e.target.value);
+    const HandleNameChange = (e) => {
+        const validatedValue = NameValidator(e.target.value);
+        setName(validatedValue);
     }
 
     const Register = async (e) => {
@@ -62,7 +57,7 @@ const Register = () => {
                                     <label className="label">Full Name</label>
                                     <div className="controls">
                                         <input type="text" className="input" placeholder="Name"
-                                            value={name} onChange={ NameValidator } />
+                                            value={name} onChange={ HandleNameChange } />
                                     </div>
                                 </div>
                                 <div className="field mt-5">
