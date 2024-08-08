@@ -40,7 +40,9 @@ const Login = () => {
                                 Welcome back! Please enter your email and password before do a booking.
                             </div>
                             <form onSubmit={Auth}>
-                                <p className="has-text-centered">{msg}</p>
+                                <article className={msg == '' ? "" : "message is-danger"}>
+                                    <div className={msg == '' ? "" : "message-body"}>{msg}</div>
+                                </article>
                                 <div className="field mt-5">
                                     <label className="label">Email</label>
                                     <div className="controls">
