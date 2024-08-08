@@ -10,6 +10,17 @@ const Register = () => {
     const [msg, setMsg] = useState('');
     const navigate = useNavigate();
 
+    const NameValidator = (e) => {
+        const inputValue = e.target.value;
+        const allowLetters = /^[a-zA-Z\s]*$/;
+
+        if (!allowLetters.test(inputValue)) {
+            e.target.value = inputValue.replace(/[^a-zA-Z\s]/g, '');
+        }
+
+        setName(e.target.value);
+    }
+
     const Register = async (e) => {
         e.preventDefault();
 
@@ -30,18 +41,28 @@ const Register = () => {
     }
 
     return (
-        <section className="hero has-background-grey-light is-fullheight is-fullwidth">
+        <section className="hero has-background-white is-fullheight is-fullwidth">
             <div className="hero-body">
                 <div className="container">
                     <div className="columns is-centered">
                         <div className="column is-4-desktop">
-                            <form onSubmit={Register} className="box">
+                            <div className="has-text-centered">
+                                <img src='/icons/icons_register.png' width={60} />
+                            </div>
+                            <div class="has-text-centered mb-2">
+                                <h1 class="subtitle is-1 has-text-black has-text-weight-semibold">Create Account</h1>
+                            </div>
+
+                            <div className="block has-text-centered">
+                                Sign up to start booking your badminton court
+                            </div>
+                            <form onSubmit={Register}>
                                 <p className="has-text-centered">{msg}</p>
                                 <div className="field mt-5">
-                                    <label className="label">Name</label>
+                                    <label className="label">Full Name</label>
                                     <div className="controls">
                                         <input type="text" className="input" placeholder="Name"
-                                            value={name} onChange={(e) => setName(e.target.value)} />
+                                            value={name} onChange={ NameValidator } />
                                     </div>
                                 </div>
                                 <div className="field mt-5">
@@ -50,20 +71,27 @@ const Register = () => {
                                         <input type="text" className="input" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
                                     </div>
                                 </div>
-                                <div className="field mt-5">
-                                    <label className="label">Password</label>
-                                    <div className="controls">
-                                        <input type="password" className="input" placeholder="******" value={password} onChange={(e) => setPassword(e.target.value)} />
+                                <div className="columns field mt-2">
+                                    <div className="column">
+                                        <label className="label">Password</label>
+                                        <div className="controls">
+                                            <input type="password" className="input" placeholder="******" value={password} onChange={(e) => setPassword(e.target.value)} />
+                                        </div>
+                                    </div>
+
+                                    <div className="column">
+                                        <label className="label">Confirm Password</label>
+                                        <div className="controls">
+                                            <input type="password" className="input" placeholder="******" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} />
+                                        </div>
                                     </div>
                                 </div>
-                                <div className="field mt-5">
-                                    <label className="label">Confirm Password</label>
-                                    <div className="controls">
-                                        <input type="password" className="input" placeholder="******" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} />
+                                <div className="field mt-2">
+                                    <button className="button is-link is-fullwidth mb-2">Register</button>
+                                    <div class="content has-text-centered is-size-7">
+                                        Already have an account?
+                                        <a class="has-text-link is-size-7" href="/"> Login</a>
                                     </div>
-                                </div>
-                                <div className="field mt-5">
-                                    <button className="button is-success is-fullwidth">Register</button>
                                 </div>
                             </form>
                         </div>
