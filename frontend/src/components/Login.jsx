@@ -32,8 +32,8 @@ const Login = () => {
                             <div className="has-text-centered">
                                 <img src='/icons/icon_waving-hand.png' width={50} />
                             </div>
-                            <div class="block has-text-centered">
-                                <h1 class="subtitle is-1 has-text-black has-text-weight-semibold">Sign in</h1>
+                            <div className="has-text-centered mb-4">
+                                <h1 className="subtitle is-1 has-text-black has-text-weight-semibold">Sign in</h1>
                             </div>
 
                             <div className="block has-text-centered">
@@ -52,15 +52,15 @@ const Login = () => {
                                     <div className="controls">
                                         <input type="password" className="input" placeholder="****************" value={password} onChange={(e) => setPassword(e.target.value)} />
                                     </div>
-                                    <div class="content is-size-7 mt-1">
-                                        <a class="has-text-grey-darker is-size-7 is-underlined" href="#">Forgot Password</a>
+                                    <div className="content is-size-7 mt-1">
+                                        <a className="has-text-grey-darker is-size-7 is-underlined" href="/resetPassword">Forgot Password</a>
                                     </div>
                                 </div>
                                 <div className="field mt-5">
                                     <button className="button is-link is-fullwidth mb-2">Login</button>
-                                    <div class="content has-text-centered is-size-7">
+                                    <div className="content has-text-centered is-size-7">
                                         Don't have an account?
-                                        <a class="has-text-link is-size-7" href="/register"> Register</a>
+                                        <a className="has-text-link is-size-7" href="/register"> Register</a>
                                     </div>
                                 </div>
                             </form>
