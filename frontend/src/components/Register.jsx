@@ -45,47 +45,47 @@ const Register = () => {
                                 <img src='/icons/icons_register.png' width={60} />
                             </div>
                             <div class="has-text-centered mb-2">
-                                <h1 class="subtitle is-1 has-text-black has-text-weight-semibold">Create Account</h1>
+                                <h1 class="subtitle is-1 has-text-black has-text-weight-semibold">Registration</h1>
                             </div>
 
                             <div className="block has-text-centered">
-                                Sign up to start booking your badminton court
+                                Daftar untuk mulai memesan lapangan
                             </div>
                             <form onSubmit={Register}>
                                 <p className="has-text-centered">{msg}</p>
                                 <div className="field mt-5">
-                                    <label className="label">Full Name</label>
+                                    <label className="label">Nama Lengkap</label>
                                     <div className="controls">
                                         <input type="text" className="input" placeholder="John Doe"
                                             value={name} onChange={ HandleNameChange } />
                                     </div>
                                 </div>
                                 <div className="field mt-5">
-                                    <label className="label">Email</label>
+                                    <label className="label">E-mail</label>
                                     <div className="controls">
                                         <input type="text" className="input" placeholder="john.doe@example.com" value={email} onChange={(e) => setEmail(e.target.value)} />
                                     </div>
                                 </div>
                                 <div className="columns field mt-2">
                                     <div className="column">
-                                        <label className="label">Password</label>
+                                        <label className="label">Kata Sandi</label>
                                         <div className="controls">
                                             <input type="password" className="input" placeholder="*********" value={password} onChange={(e) => setPassword(e.target.value)} />
                                         </div>
                                     </div>
 
                                     <div className="column">
-                                        <label className="label">Confirm Password</label>
+                                        <label className="label">Konfirmasi Kata Sandi</label>
                                         <div className="controls">
                                             <input type="password" className="input" placeholder="*********" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} />
                                         </div>
                                     </div>
                                 </div>
                                 <div className="field mt-2">
-                                    <button className="button is-link is-fullwidth mb-2">Register</button>
+                                    <button className="button is-link is-fullwidth mb-2">Buat Akun</button>
                                     <div class="content has-text-centered is-size-7">
-                                        Already have an account?
-                                        <a class="has-text-link is-size-7" href="/"> Login</a>
+                                        Sudah punya akun?
+                                        <a class="has-text-link is-size-7" href="/"> Masuk</a>
                                     </div>
                                 </div>
                             </form>

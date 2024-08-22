@@ -1,0 +1,42 @@
+[
+    {
+        "index": 1,
+        "question": "Bagaimana cara membuat akun?",
+        "answer": "Untuk membuat akun, klik tombol \"Daftar\" di halaman utama. Isi data Anda termasuk nama, alamat email, dan kata sandi yang aman. Setelah Anda melengkapi formulir, Anda akan menerima email konfirmasi untuk mengaktifkan akun Anda."
+    },
+    {
+        "index": 2,
+        "question": "Bagaimana cara memesan lapangan?",
+        "answer": "Setelah masuk, pergi ke bagian \"Pesan Lapangan\". Pilih tanggal, jam, dan lapangan yang Anda inginkan. Setelah Anda membuat pilihan, klik \"Konfirmasi Pemesanan\" dan lanjutkan ke bagian pembayaran jika diperlukan."
+    },
+    {
+        "index": 3,
+        "question": "Apakah saya bisa membatalkan atau menjadwal ulang pemesanan?",
+        "answer": "Ya, Anda dapat membatalkan atau menjadwal ulang pemesanan hingga 24 jam sebelum waktu yang dijadwalkan. Pergi ke \"Pemesanan Saya\" di dashboard akun Anda, pilih pemesanan yang ingin Anda batalkan atau jadwal ulang, dan ikuti petunjuknya."
+    },
+    {
+        "index": 4,
+        "question": "Apakah ada biaya untuk membatalkan pemesanan?",
+        "answer": "Jika Anda membatalkan lebih dari 24 jam sebelum pemesanan, tidak ada biaya pembatalan. Pembatalan yang dilakukan dalam 24 jam dari waktu pemesanan mungkin dikenakan biaya pembatalan, tergantung pada kebijakan fasilitas."
+    },
+    {
+        "index": 5,
+        "question": "Metode pembayaran apa saja yang diterima?",
+        "answer": "Kami menerima berbagai metode pembayaran termasuk kartu kredit/debit, PayPal, dan dalam beberapa kasus, transfer bank langsung. Semua pembayaran diproses dengan aman."
+    },
+    {
+        "index": 6,
+        "question": "Bagaimana saya tahu jika pemesanan saya berhasil?",
+        "answer": "Setelah pemesanan Anda dikonfirmasi, Anda akan menerima email konfirmasi dengan detail pemesanan. Anda juga dapat melihat pemesanan yang dikonfirmasi di bagian \"Pemesanan Saya\" di akun Anda."
+    },
+    {
+        "index": 7,
+        "question": "Apa yang terjadi jika lapangan tidak tersedia karena pemeliharaan atau masalah lain?",
+        "answer": "Jika lapangan yang Anda pesan menjadi tidak tersedia karena pemeliharaan atau masalah tak terduga lainnya, kami akan memberi tahu Anda sesegera mungkin dan menawarkan slot waktu alternatif atau pengembalian dana penuh."
+    },
+    {
+        "index": 8,
+        "question": "Bisakah saya membawa peralatan sendiri?",
+        "answer": "Ya, Anda dipersilakan untuk membawa raket dan shuttlecock bulu tangkis Anda sendiri. Namun, jika Anda tidak memiliki peralatan, Anda dapat menyewanya dari fasilitas."
+    }
+]

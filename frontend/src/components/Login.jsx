@@ -11,10 +11,15 @@ const Login = () => {
     const Auth = async (e) => {
         e.preventDefault();
         try {
-            await axios.post('http://localhost:3434/login', {
+            const response = await axios.post('http://localhost:3434/login', {
                 email: email,
                 password: password
             });
+
+            const currentUserId = response.data.userId;
+            localStorage.setItem('currentUserId', currentUserId);
+
+            console.log(localStorage.currentUserId);
             navigate('/dashboard');
         } catch (error) {
             if (error.response) {
@@ -33,36 +38,40 @@ const Login = () => {
                                 <img src='/icons/icon_waving-hand.png' width={50} />
                             </div>
                             <div className="has-text-centered mb-4">
-                                <h1 className="subtitle is-1 has-text-black has-text-weight-semibold">Sign in</h1>
+                                <h1 className="subtitle is-1 has-text-black has-text-weight-semibold">Sign In</h1>
                             </div>
 
                             <div className="block has-text-centered">
-                                Welcome back! Please enter your email and password before do a booking.
+                                Selamat datang kembali! <br></br>Masukkan email dan kata sandi Anda.
                             </div>
                             <form onSubmit={Auth}>
                                 <article className={msg == '' ? "" : "message is-danger"}>
                                     <div className={msg == '' ? "" : "message-body"}>{msg}</div>
                                 </article>
                                 <div className="field mt-5">
-                                    <label className="label">Email</label>
+                                    <label className="label">E-mail</label>
                                     <div className="controls">
                                         <input type="text" className="input" placeholder="john.doe@example.com" value={email} onChange={(e) => setEmail(e.target.value)} />
                                     </div>
                                 </div>
                                 <div className="field mt-5">
-                                    <label className="label">Password</label>
+                                    <label className="label">Kata Sandi</label>
                                     <div className="controls">
                                         <input type="password" className="input" placeholder="****************" value={password} onChange={(e) => setPassword(e.target.value)} />
                                     </div>
-                                    <div className="content is-size-7 mt-1">
-                                        <a className="has-text-grey-darker is-size-7 is-underlined" href="/resetPassword">Forgot Password</a>
+                                    <div className="content is-size-7 mt-2 is-flex is-justify-content-space-between">
+                                        <label className="is-flex checkbox is-align-content-center is-align-items-center">
+                                            <input className="mr-1" type="checkbox"  />
+                                            Tetap masuk di perangkat ini
+                                        </label>
+                                        <a className="has-text-grey-darker is-size-7 is-underlined" href="/resetPassword">Lupa Kata Sandi</a>
                                     </div>
                                 </div>
                                 <div className="field mt-5">
-                                    <button className="button is-link is-fullwidth mb-2">Login</button>
+                                    <button className="button is-link is-fullwidth mb-2">Masuk</button>
                                     <div className="content has-text-centered is-size-7">
-                                        Don't have an account?
-                                        <a className="has-text-link is-size-7" href="/register"> Register</a>
+                                        Belum punya akun?
+                                        <a className="has-text-link is-size-7" href="/register"> Daftar Disini</a>
                                     </div>
                                 </div>
                             </form>

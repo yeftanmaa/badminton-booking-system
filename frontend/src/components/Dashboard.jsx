@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { jwtDecode } from 'jwt-decode';
 import { useNavigate } from 'react-router-dom';
+import Sidebar from './Sidebar';
 
 const Dashboard = () => {
     const [name, setName] = useState('');
@@ -56,27 +57,31 @@ const Dashboard = () => {
     }
 
     return (
-        <div className="container mt-5">
-            <h1>Welcome Back: {name}</h1>
-            <table className="table is-striped is-fullwidth">
-                <thead>
-                    <tr>
-                        <th>No</th>
-                        <th>Name</th>
-                        <th>Email</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {users.map((user, index) => (
-                        <tr key={user.id}>
-                            <td>{index + 1}</td>
-                            <td>{user.name}</td>
-                            <td>{user.email}</td>
-                        </tr>
-                    ))}
+        <div className="container columns is-fullheight p-5">
+            <Sidebar />
 
-                </tbody>
-            </table>
+            <div className="column menu">
+                <h1 className="is-size-2">Hey, {name}!</h1>
+                <table className="table is-striped is-fullwidth">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {users.map((user, index) => (
+                            <tr key={user.id}>
+                                <td>{index + 1}</td>
+                                <td>{user.name}</td>
+                                <td>{user.email}</td>
+                            </tr>
+                        ))}
+
+                    </tbody>
+                </table>
+            </div>
         </div>
     );
 }

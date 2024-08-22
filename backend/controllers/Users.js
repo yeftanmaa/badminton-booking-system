@@ -14,11 +14,65 @@ export const GetUsers = async(req, res) => {
     }
 }
 
+export const GetSingleUsers = async(req, res) => {
+    try {
+        const users = await Users.findOne(
+            {
+                attributes: ['id', 'name', 'email'],
+                where: { id: req.params.id }
+            }
+        );
+
+        res.json(users);
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+export const UpdateUserInfo = async(req, res) => {
+    try {
+        const { name, email, password, confirmPassword } = req.body;
+        console.log("Received data:", { name, email, password, confirmPassword });
+
+        const updateData = { name, email };
+
+        // Check if password and confirmPassword are provided and if they match
+        if (password && confirmPassword) {
+            if (password !== confirmPassword) {
+                return res.status(400).json({ msg: 'Kata sandi dan konfirmasi kata sandi tidak cocok!' });
+            } else {
+                const salt = await bcrypt.genSalt();
+                const hashPassword = await bcrypt.hash(password, salt);
+                updateData.password = hashPassword;
+            }
+        }
+        
+        const [updated] = await Users.update(
+            updateData,
+            { where: { id: req.params.id }}
+        );
+
+        if (updated) {
+            const updatedUser = await Users.findOne({
+                attributes: ['id', 'name', 'email'],
+                where: { id: req.params.id }
+            });
+
+            res.status(200).json({ msg: "Berhasil memperbarui informasi pengguna!", user: updatedUser });
+        } else {
+            res.status(404).json({ message: 'Pengguna tidak ditemukan'});
+        }
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: "Terjadi kesalahan pada server saat memperbarui pengguna" });
+    }
+}
+
 export const Register = async(req, res) => {
     const { name, email, password, confirmPassword } = req.body;
 
     if (password !== confirmPassword) {
-        return res.status(400).json({ msg: 'Password and Confirmation Password did not match!' });
+        return res.status(400).json({ msg: 'Kata sandi dan konfirmasi kata sandi tidak cocok!' });
     }
 
     const salt = await bcrypt.genSalt();
@@ -31,7 +85,7 @@ export const Register = async(req, res) => {
             password: hashPassword
         });
 
-        res.json({ msg: "Successfully registered" });
+        res.json({ msg: "Akun berhasil dibuat!" });
     } catch (error) {
         console.error(error);
     }
@@ -48,7 +102,7 @@ export const Login = async(req, res) => {
         const match = await bcrypt.compare(req.body.password, user[0].password);
 
         if (!match) {
-            return res.status(400).json({ msg: "Wrong Password" });
+            return res.status(400).json({ msg: "Email atau kata sandi salah" });
         };
 
         const userId = user[0].id;
@@ -74,9 +128,9 @@ export const Login = async(req, res) => {
             maxAge: 24 * 60 * 60 * 1000
         });
 
-        res.json({ accessToken });
+        res.json({ userId, accessToken });
     } catch (error) {
-        res.status(404).json({ msg: "Email not exist" });
+        res.status(404).json({ msg: "Email tidak ditemukan" });
     }
 }
 
