@@ -19,7 +19,8 @@
     "bulma": "^1.0.2",
     "jwt-decode": "^4.0.0",
     "react-router-dom": "^6.26.0",
-    "react-scripts": "^5.0.1"
+    "react-scripts": "^5.0.1",
+    "sass": "^1.77.8"
   },
   "browserslist": {
     "production": [
