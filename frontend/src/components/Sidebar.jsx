@@ -11,7 +11,7 @@ const Sidebar = () => {
         
         try {
             const response = await axios.get(`http://localhost:3434/users/${localStorage.currentUserId}`);
-            localStorage.setItem('currentUsersInformation', JSON.stringify(response.data));
+            localStorage.setItem('CurrentUsersInformation', JSON.stringify(response.data));
 
             navigate(`/settings/${response.data.id}`);
         } catch (error) {
@@ -23,6 +23,7 @@ const Sidebar = () => {
     const Logout = async () => {
         try {
             await axios.delete('http://localhost:3434/logout');
+            localStorage.clear();
             navigate('/');
         } catch (error) {
             console.error(error);
@@ -58,7 +59,7 @@ const Sidebar = () => {
             <p className="menu-label">Administrasi</p>
             <ul className="menu-list">
                 <li>
-                    <a className="has-background-light has-text-link">
+                    <a href='/payment-method' className="has-background-light has-text-link">
                         <span className="icon-text">
                             <span className="icon">
                                 <i className="fas fa-money-bill"></i>

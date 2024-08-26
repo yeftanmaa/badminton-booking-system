@@ -8,22 +8,6 @@ import { NameValidator } from "../utils/NameValidator.js";
 const Settings = () => {
     const navigate = useNavigate();
 
-    useEffect(() => {
-        GetCurrentUsersInformation();
-    }, []);
-
-    const GetCurrentUsersInformation = async () => {
-        
-        try {
-            const response = await axios.get(`http://localhost:3434/users/${localStorage.currentUserId}`);
-            localStorage.setItem('CurrentUsersInformation', JSON.stringify(response.data));
-
-        } catch (error) {
-            console.error(error);
-            navigate('/');
-        }
-    }
-
     const currentUserInfo = JSON.parse(localStorage.CurrentUsersInformation);
     
     // Trigger external function 'FullNameSeparator'
@@ -122,8 +106,6 @@ const Settings = () => {
                 } 
             }
         }
-
-        
     }
 
     const HandleNameChange = (e) => {
@@ -144,11 +126,9 @@ const Settings = () => {
         <section className="container columns is-fullheight p-5">
             <Sidebar />
 
-            <div className="container is-fullheight p-5">
-                <div className="is-flex is-justify-content-space-between is-align-items-center mb-4">
-                    <div>                        
-                        <h1 className="is-size-2 has-text-weight-semibold">Pengaturan</h1>
-                    </div>
+            <div className="container px-5">
+                <div>                        
+                    <h1 className="is-size-2 has-text-weight-semibold pb-4" style={{ borderBottom: '1px solid rgba(0,0,0,0.10)'}}>Pengaturan</h1>
                 </div>
 
                 <div className={`notification ${colorMsg} is-light`} hidden={!showMsg}>

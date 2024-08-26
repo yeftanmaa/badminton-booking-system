@@ -18,6 +18,7 @@ const Login = () => {
 
             const currentUserId = response.data.userId;
             localStorage.setItem('currentUserId', currentUserId);
+            localStorage.setItem('authToken', 'loggedIn');
 
             console.log(localStorage.currentUserId);
             navigate('/dashboard');
