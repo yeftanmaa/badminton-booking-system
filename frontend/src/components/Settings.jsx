@@ -25,6 +25,14 @@ const Settings = () => {
     const [showMsg, setShowMsg] = useState(false);
     const [colorMsg, setColorMsg] = useState('');
 
+    const [initialValues, setInitialValues] = useState({
+        fname: userFullName[0],
+        lname: userFullName[1],
+        email: currentUserInfo.email,
+      });
+    
+    const [currentValues, setCurrentValues] = useState({ ...initialValues });
+
     useEffect(() => {
         let timer;
         if (showMsg) {
@@ -36,6 +44,15 @@ const Settings = () => {
         // Cleanup timeout if the component unmounts or if showMsg changes before timeout
         return () => clearTimeout(timer);
     }, [showMsg]);
+
+    useEffect(() => {
+        const valuesMatch =
+          currentValues.fname === initialValues.fname &&
+          currentValues.lname === initialValues.lname &&
+          currentValues.email === initialValues.email;
+    
+        setIsButtonDisabled(valuesMatch);
+    }, [currentValues, initialValues]);
 
     const Logout = async () => {
         try {
@@ -118,8 +135,15 @@ const Settings = () => {
         } else if (name === "lname") {
             setUpdatedLastName(validatedValue);
         }
+    }
 
-        setIsButtonDisabled(false);
+    const IsChangesMade = (e) => {
+        const { name, value } = e.target;
+
+        setCurrentValues((prevValues) => ({
+            ...prevValues,
+            [name]: value
+        }))
     }
 
     return (
@@ -149,7 +173,7 @@ const Settings = () => {
                                 }
 
                                 { isAddUsernameClicked &&
-                                    <div className="field">
+                                    <div className="field mt-5">
                                         <label className="label">Username</label>
                                         <input className="input" type="text" name="username" placeholder="johndoe99" />
                                     </div>
@@ -159,12 +183,18 @@ const Settings = () => {
                             <div className="columns mb-0 mt-2">
                                 <div className="field column">
                                     <label className="label">Nama Depan</label>
-                                    <input className="input" type="text" placeholder="John Doe" name="fname" value={updatedFirstName} onChange={HandleNameChange} />
+                                    <input className="input" type="text" placeholder="John Doe" name="fname" value={updatedFirstName} onChange={(event) => {
+                                        HandleNameChange(event);
+                                        IsChangesMade(event);
+                                    }} />
                                 </div>
 
                                 <div className="field column">
                                     <label className="label">Nama Belakang</label>
-                                    <input className="input" type="text" placeholder="John Doe" name="lname" value={updatedLastName} onChange={HandleNameChange} />
+                                    <input className="input" type="text" placeholder="John Doe" name="lname" value={updatedLastName} onChange={(event) => {
+                                        HandleNameChange(event);
+                                        IsChangesMade(event);
+                                    }} />
                                 </div>
                             </div>
 
@@ -173,6 +203,7 @@ const Settings = () => {
                                 <input className="input" type="email" placeholder="john@doe.com" name="email" value={updatedEmail} onChange={(e) => {
                                     setUpdatedEmail(e.target.value);
                                     setIsButtonDisabled(false);
+                                    IsChangesMade(e);
                                 }} />
                             </div>
 
