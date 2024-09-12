@@ -1,0 +1,39 @@
+.custom-border-dashed {
+    border: 2px dashed #DDD;
+    border-radius: 15px !important;
+}
+
+.custom-dot-future-identifier {
+    width: 10px;
+    height: 10px;
+    background-color: #90D5FF;
+    border-radius: 50%;
+    display: inline-block;
+    margin: 2px 7px 0px 0px;
+}
+
+.custom-dot-present-identifier {
+    width: 10px;
+    height: 10px;
+    background-color: #3ed469;
+    border-radius: 50%;
+    display: inline-block;
+    margin: 2px 7px 0px 0px;
+}
+
+.custom-dot-past-identifier {
+    width: 10px;
+    height: 10px;
+    background-color: #f76b5e;
+    border-radius: 50%;
+    display: inline-block;
+    margin: 2px 7px 0px 0px;
+}
+
+.custom-border-radius {
+    border-radius: 15px !important;
+}
+
+.custom-grid-maxWidth {
+    max-width: 360px;
+}
